@@ -146,7 +146,6 @@ class FavoriteShoppingCart(models.Model):
 
 class Favorite(FavoriteShoppingCart):
 
-
     class Meta(FavoriteShoppingCart.Meta):
         default_related_name = 'favorites'
         verbose_name = 'Избранное'
@@ -154,7 +153,6 @@ class Favorite(FavoriteShoppingCart):
 
 
 class ShoppingCart(FavoriteShoppingCart):
-
 
     class Meta(FavoriteShoppingCart.Meta):
         default_related_name = 'shopping_list'
