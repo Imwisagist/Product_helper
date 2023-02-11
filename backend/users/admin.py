@@ -1,14 +1,26 @@
 from django.contrib import admin
 
-from .models import User
+from recipes.models import Recipe
+from .models import User, Follow
+from django.contrib.auth.models import Group
 
 
+@admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('username', 'email', 'first_name', 'last_name')
+    list_display = ('username', 'email', 'first_name', 'last_name',
+                    'get_recipes_count', 'get_followers_count',)
     search_fields = ('username', 'email')
     list_filter = ('first_name', 'last_name')
-    ordering = ('username', )
+    ordering = ('username',)
     empty_value_display = '-пусто-'
 
+    def get_recipes_count(self, obj):
+        return obj.recipes.count()
+    get_recipes_count.short_description = 'Количество рецептов'
 
-admin.site.register(User, UserAdmin)
+    def get_followers_count(self, obj):
+        return obj.following.count()
+    get_followers_count.short_description = 'Количество подписчиков'
+
+
+admin.site.unregister(Group)
