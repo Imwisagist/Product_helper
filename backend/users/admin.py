@@ -1,8 +1,8 @@
 from django.contrib import admin
+from django.contrib.auth.models import Group
 
 from recipes.models import Recipe
 from .models import User, Follow
-from django.contrib.auth.models import Group
 
 
 @admin.register(User)
