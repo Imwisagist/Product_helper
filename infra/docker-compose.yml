@@ -8,12 +8,11 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
       - .env
-    container_name: foodgram_database
+    container_name: foodgram_postgresql
 
 
   backend:
-    build:
-      context: ../backend
+    image: imwisagist/foodgram_backend
     volumes:
       - static_value:/app/static/
       - media_value:/app/media/
@@ -26,8 +25,7 @@ services:
 
 
   frontend:
-    build:
-      context: ../frontend
+    image: imwisagist/foodgram_frontend
     volumes:
       - ../frontend/:/app/result_build/
     depends_on:
@@ -39,25 +37,15 @@ services:
     image: nginx:1.19.3
     ports:
       - "80:80"
-      # - "443:443"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - ../frontend/build:/usr/share/nginx/html/
       - ../docs/:/usr/share/nginx/html/api/docs/
       - static_value:/var/html/static/
       - media_value:/var/html/media/
-      # - ./data/certbot/conf:/etc/letsencrypt
-      # - ./data/certbot/www:/var/www/certbot
     depends_on:
       - backend
     container_name: foodgram_nginx
-
-
-  # certbot:
-  #   image: certbot/certbot
-  #   volumes:
-  #     - ./data/certbot/conf:/etc/letsencrypt
-  #     - ./data/certbot/www:/var/www/certbot
 
 
 volumes:
