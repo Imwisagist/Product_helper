@@ -11,14 +11,6 @@
 - http://recipes.sytes.net/api/docs/
 ```
 
-## Учетная запись администратора:
-
-```
-- логин: review
-- почта:review@admin.ru 
-- пароль: review1admin
-```
-
 Foodgram - проект позволяет:
 
 - Просматривать рецепты
