@@ -6,9 +6,9 @@
 ## Проект доступен по ссылкам:
 
 ```
-- http://recipes.sytes.net/
-- http://recipes.sytes.net/admin/
-- http://recipes.sytes.net/api/docs/
+- https://recipes.sytes.net/
+- https://recipes.sytes.net/admin/
+- https://recipes.sytes.net/api/docs/
 ```
 
 Foodgram - проект позволяет:
